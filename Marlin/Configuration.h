@@ -185,9 +185,13 @@
 //    #define  DEFAULT_Ki 0.1
 //    #define  DEFAULT_Kd 12
 // M2r2
-#define DEFAULT_Kp 25.89
-#define DEFAULT_Ki 1.94
-#define DEFAULT_Kd 86.53
+// #define DEFAULT_Kp 25.89
+// #define DEFAULT_Ki 1.94
+// #define DEFAULT_Kd 86.53
+// Custom
+#define DEFAULT_Kp 22.80
+#define DEFAULT_Ki 1.53
+#define DEFAULT_Kd 85.04
 
 // Mendel Parts V9 on 12V
 //    #define  DEFAULT_Kp 63.0
@@ -205,7 +209,7 @@
 // If your configuration is significantly different than this and you don't understand the issues involved, you probably
 // shouldn't use bed PID until someone else verifies your hardware works.
 // If this is enabled, find your own PID constants below.
-//#define PIDTEMPBED
+#define PIDTEMPBED
 //
 //#define BED_LIMIT_SWITCHING
 
@@ -218,9 +222,9 @@
 #ifdef PIDTEMPBED
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-    #define  DEFAULT_bedKp 10.00
-    #define  DEFAULT_bedKi .023
-    #define  DEFAULT_bedKd 305.4
+//    #define  DEFAULT_bedKp 10.00
+//    #define  DEFAULT_bedKi .023
+//    #define  DEFAULT_bedKd 305.4
 
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from pidautotune
@@ -229,6 +233,10 @@
 //    #define  DEFAULT_bedKd 1675.16
 
 // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
+
+#define DEFAULT_bedKp 201.67
+#define DEFAULT_bedKi 9.85
+#define DEFAULT_bedKd 1033.12
 #endif // PIDTEMPBED
 
 
@@ -628,7 +636,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
 // which is not ass annoying as with the hardware PWM. On the other hand, if this frequency
 // is too low, you should also increment SOFT_PWM_SCALE.
-#define FAN_SOFT_PWM
+// #define FAN_SOFT_PWM
 
 // Incrementing this by 1 will double the software PWM frequency,
 // affecting heaters, and the fan if FAN_SOFT_PWM is enabled.
