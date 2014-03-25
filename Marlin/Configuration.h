@@ -16,7 +16,8 @@
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
 #define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "Jin Choi <jsc@alum.mit.edu>" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "Erik Akia <erikakia@gmail.com>" // Who made the changes.
+// These modifications are for the 1st generation of Makergear M2 with the hot end version that came with it.
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
 // This allows the connection of wireless adapters (for instance) to non-default port pins.
@@ -170,8 +171,9 @@
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
-#define BANG_MAX 255 // limits current to nozzle while in bang-bang mode; 255=full current
-#define PID_MAX 255 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
+// Changes made by Erik Akia 3/24/2014 These were set at 200 from the original firmware
+#define BANG_MAX 200 // limits current to nozzle while in bang-bang mode; 255=full current
+#define PID_MAX 200 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port.
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
@@ -188,17 +190,17 @@
 // #define  DEFAULT_Kd 114
 
 // MakerGear
-//    #define  DEFAULT_Kp 7.0
-//    #define  DEFAULT_Ki 0.1
-//    #define  DEFAULT_Kd 12
+    #define  DEFAULT_Kp 7.0
+    #define  DEFAULT_Ki 0.1
+    #define  DEFAULT_Kd 12
 // M2r2
 // #define DEFAULT_Kp 25.89
 // #define DEFAULT_Ki 1.94
 // #define DEFAULT_Kd 86.53
 // Custom
-#define DEFAULT_Kp 22.80
-#define DEFAULT_Ki 1.53
-#define DEFAULT_Kd 85.04
+//#define DEFAULT_Kp 22.80
+//#define DEFAULT_Ki 1.53
+//#define DEFAULT_Kd 85.04
 
 // Mendel Parts V9 on 12V
 //    #define  DEFAULT_Kp 63.0
@@ -254,9 +256,9 @@
 //if PREVENT_DANGEROUS_EXTRUDE is on, you can still disable (uncomment) very long bits of extrusion separately.
 #define PREVENT_LENGTHY_EXTRUDE
 
-// #define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 170
 // For M2 V3b extruder, temps indicated are ~20C higher
-#define EXTRUDE_MINTEMP 190
+//#define EXTRUDE_MINTEMP 190
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
@@ -446,11 +448,11 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {50*60, 50*60, 15*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {50*60, 50*60, 22*60, 0}  // set the homing speeds (mm/min) //Erik Akia I like Z a bit faster
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.88, 88.88, 400, 471.5}  // default steps per unit for M2
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.88/2, 88.88/2, 400/2, 471.5/2}  // default steps per unit for 1st gen rambo on M2 8 micro steps not the 16 of newer machines
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 250, 200000}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
@@ -485,7 +487,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // Preheat Constants
 // These temps are bottom of the recommended heating range for the M2.
-#define PLA_PREHEAT_HOTEND_TEMP 200
+#define PLA_PREHEAT_HOTEND_TEMP 180 // Changes made by Erik Akia 3/24/2014 V1 hot end
 #define PLA_PREHEAT_HPB_TEMP 60
 #define PLA_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
