@@ -281,7 +281,7 @@ void PID_autotune(float temp, int extruder, int ncycles)
         }
       } 
     }
-    if(input > (temp + 20)) {
+    if(input > (temp + 30)) {//So that I can run autotune with my E3D hotend Erik Akia 10/3/2014
       SERIAL_PROTOCOLLNPGM("PID Autotune failed! Temperature too high");
       return;
     }
